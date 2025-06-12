@@ -250,14 +250,10 @@ const Shops = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="text-sm">
-              <span className="text-gray-600">Delivery: </span>
-              <span
-                className={`font-medium ${shop.deliveryFee === "Free" ? "text-green-600" : ""}`}
-              >
-                {shop.deliveryFee}
-              </span>
-            </div>
+            <div className="text-sm text-gray-600">Delivery: </div>
+            <span className="mr-auto">
+              <p>Rs 40</p>
+            </span>
             <Button
               size="sm"
               className="bg-green-600 hover:bg-green-700"
