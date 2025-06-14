@@ -35,6 +35,7 @@ import {
   CheckCircle,
   Calendar,
   BarChart3,
+  Clock,
 } from "lucide-react";
 
 const Sustainability = () => {
