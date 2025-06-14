@@ -287,6 +287,23 @@ const Shops = () => {
     </Card>
   );
 
+  // Show initial loading screen
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="container mx-auto px-4 py-16">
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <Loading
+              size="lg"
+              message="Finding fresh products within 500m of your location..."
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
