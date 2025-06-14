@@ -35,16 +35,16 @@ const Loading = ({
       <div className="relative flex items-center justify-center">
         {/* Animated Logo Container */}
         <div className={`${sizeClasses[size]} relative animate-pulse`}>
-          {/* SVG representation of the Near me logo */}
+          {/* SVG representation of the Nearme logo */}
           <svg
-            viewBox="0 0 120 150"
+            viewBox="0 0 100 130"
             className="w-full h-full drop-shadow-lg"
             style={{
-              filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.15))",
+              filter: "drop-shadow(0 6px 12px rgba(0,0,0,0.2))",
             }}
           >
-            {/* Map Pin Shape with Gradient */}
             <defs>
+              {/* Green gradient for the pin */}
               <linearGradient
                 id="pinGradient"
                 x1="0%"
@@ -52,120 +52,164 @@ const Loading = ({
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#86efac" />
-                <stop offset="50%" stopColor="#22c55e" />
-                <stop offset="100%" stopColor="#16a34a" />
+                <stop offset="0%" stopColor="#7dd3fc" />
+                <stop offset="30%" stopColor="#4ade80" />
+                <stop offset="70%" stopColor="#22c55e" />
+                <stop offset="100%" stopColor="#15803d" />
               </linearGradient>
-              <linearGradient
-                id="circleGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
+
+              {/* Inner shadow for pin depth */}
+              <radialGradient id="pinShadow" cx="30%" cy="30%" r="70%">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#000000" stopOpacity="0.1" />
+              </radialGradient>
+
+              {/* White circle gradient */}
+              <radialGradient id="circleGradient" cx="40%" cy="40%" r="60%">
                 <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="100%" stopColor="#f8fafc" />
-              </linearGradient>
+                <stop offset="100%" stopColor="#f1f5f9" />
+              </radialGradient>
             </defs>
 
-            {/* Map Pin Body */}
+            {/* Drop shadow ellipse */}
+            <ellipse
+              cx="50"
+              cy="115"
+              rx="18"
+              ry="6"
+              fill="#000000"
+              opacity="0.15"
+              className="animate-pulse"
+            />
+
+            {/* Map Pin Body - teardrop shape */}
             <path
-              d="M60 25 C40 25, 25 40, 25 60 C25 75, 35 88, 60 115 C85 88, 95 75, 95 60 C95 40, 80 25, 60 25 Z"
+              d="M50 20
+                 C35 20, 23 32, 23 47
+                 C23 62, 35 75, 50 100
+                 C65 75, 77 62, 77 47
+                 C77 32, 65 20, 50 20 Z"
               fill="url(#pinGradient)"
               className="animate-bounce-gentle"
             />
 
-            {/* White Circle Inside Pin */}
+            {/* Pin inner shadow for 3D effect */}
+            <path
+              d="M50 20
+                 C35 20, 23 32, 23 47
+                 C23 62, 35 75, 50 100
+                 C65 75, 77 62, 77 47
+                 C77 32, 65 20, 50 20 Z"
+              fill="url(#pinShadow)"
+            />
+
+            {/* White circle inside pin */}
             <circle
-              cx="60"
-              cy="58"
-              r="25"
+              cx="50"
+              cy="47"
+              r="20"
               fill="url(#circleGradient)"
               stroke="#e2e8f0"
-              strokeWidth="1"
+              strokeWidth="0.5"
             />
 
             {/* Delivery Truck */}
             <g className="animate-slide-truck">
-              {/* Truck Body */}
+              {/* Truck main body */}
               <rect
-                x="40"
-                y="48"
-                width="22"
-                height="12"
-                rx="2"
-                fill="#2563eb"
+                x="38"
+                y="42"
+                width="16"
+                height="10"
+                rx="1.5"
+                fill="#1e40af"
               />
-              {/* Truck Cab */}
-              <rect x="36" y="52" width="8" height="8" rx="1" fill="#1d4ed8" />
-              {/* Truck Wheels */}
-              <circle cx="42" cy="62" r="2.5" fill="#374151" />
-              <circle cx="58" cy="62" r="2.5" fill="#374151" />
 
-              {/* Motion Lines */}
-              <g className="animate-motion-lines">
+              {/* Truck cab */}
+              <rect x="33" y="45" width="7" height="7" rx="1" fill="#1d4ed8" />
+
+              {/* Truck wheels */}
+              <circle cx="37" cy="53" r="2" fill="#374151" />
+              <circle cx="48" cy="53" r="2" fill="#374151" />
+
+              {/* Truck windshield */}
+              <rect
+                x="34"
+                y="46"
+                width="4"
+                height="3"
+                rx="0.5"
+                fill="#60a5fa"
+                opacity="0.7"
+              />
+
+              {/* Motion/speed lines */}
+              <g className="animate-motion-lines opacity-80">
                 <line
-                  x1="68"
+                  x1="56"
+                  y1="44"
+                  x2="62"
+                  y2="44"
+                  stroke="#3b82f6"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="56"
+                  y1="47"
+                  x2="60"
+                  y2="47"
+                  stroke="#3b82f6"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                />
+                <line
+                  x1="56"
                   y1="50"
-                  x2="75"
+                  x2="58"
                   y2="50"
-                  stroke="#60a5fa"
-                  strokeWidth="1.5"
-                  opacity="0.8"
-                />
-                <line
-                  x1="68"
-                  y1="54"
-                  x2="73"
-                  y2="54"
-                  stroke="#60a5fa"
-                  strokeWidth="1.5"
-                  opacity="0.6"
-                />
-                <line
-                  x1="68"
-                  y1="58"
-                  x2="71"
-                  y2="58"
-                  stroke="#60a5fa"
-                  strokeWidth="1.5"
-                  opacity="0.4"
+                  stroke="#3b82f6"
+                  strokeWidth="0.8"
+                  strokeLinecap="round"
                 />
               </g>
             </g>
 
-            {/* Shopping Bag on Truck */}
+            {/* Shopping Bag positioned on top */}
             <g className="animate-float-bag">
               <rect
-                x="55"
-                y="42"
+                x="46"
+                y="35"
                 width="8"
                 height="8"
                 rx="1"
-                fill="#06b6d4"
-                stroke="#0891b2"
+                fill="#0891b2"
+                stroke="#0e7490"
                 strokeWidth="0.5"
               />
-              {/* Bag Handles */}
+
+              {/* Bag handles */}
               <path
-                d="M57 44 Q58 42, 59 44 M61 44 Q62 42, 63 44"
-                stroke="#0891b2"
+                d="M48 37 C48.5 35.5, 49.5 35.5, 50 37 M52 37 C52.5 35.5, 53.5 35.5, 54 37"
+                stroke="#0e7490"
                 strokeWidth="1"
                 fill="none"
+                strokeLinecap="round"
               />
-              {/* Bag Highlight */}
+
+              {/* Bag highlight for 3D effect */}
               <rect
-                x="56"
-                y="43"
-                width="1"
-                height="4"
+                x="47"
+                y="36"
+                width="1.5"
+                height="5"
                 fill="#67e8f9"
-                opacity="0.6"
+                opacity="0.8"
+                rx="0.2"
               />
             </g>
           </svg>
         </div>
-
         {/* Pulsing Effect Rings */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-20 h-20 border-2 border-green-300 rounded-full animate-ping opacity-25"></div>
