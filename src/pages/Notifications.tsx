@@ -510,7 +510,7 @@ const Notifications = () => {
                                   }
                                 >
                                   {notification.isRead ? (
-                                    <MarkAsUnread className="w-4 h-4" />
+                                    <Mail className="w-4 h-4" />
                                   ) : (
                                     <CheckCircle className="w-4 h-4" />
                                   )}
