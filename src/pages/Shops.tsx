@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import Loading, { LoadingSpinner, LoadingSkeleton } from "@/components/Loading";
 import {
   Card,
   CardContent,
@@ -20,6 +19,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navigation from "@/components/Navigation";
+import Loading, { LoadingSpinner, LoadingSkeleton } from "@/components/Loading";
 import {
   MapPin,
   Star,
@@ -118,7 +118,7 @@ const Shops = () => {
       reviews: 256,
       distance: "200m",
       deliveryTime: "10-15 min",
-      deliveryFee: "$1.99",
+      deliveryFee: "Rs 40",
       image: "/api/placeholder/300/200",
       description: "Premium organic foods and natural products",
       features: ["100% Organic", "Sustainable", "Zero Waste"],
@@ -428,20 +428,15 @@ const Shops = () => {
 
                 <div>
                   <h3 className="text-sm font-medium mb-3">Quick Filters</h3>
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search by name or product..."
-                      className="pl-10"
-                      onChange={handleSearch}
-                      disabled={isSearching}
-                    />
-                    {isSearching && (
-                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                        <LoadingSpinner size="sm" />
-                      </div>
-                    )}
-                  </div>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-2 text-sm">
+                      <input type="checkbox" className="rounded" />
+                      <span>Open Now</span>
+                    </label>
+                    <label className="flex items-center space-x-2 text-sm">
+                      <input type="checkbox" className="rounded" />
+                      <span>Free Delivery</span>
+                    </label>
                     <label className="flex items-center space-x-2 text-sm">
                       <input type="checkbox" className="rounded" />
                       <span>Organic Products</span>
@@ -484,21 +479,29 @@ const Shops = () => {
               </div>
             </div>
 
-            <div
-              className={
-                viewMode === "grid"
-                  ? "grid md:grid-cols-2 xl:grid-cols-3 gap-6"
-                  : "space-y-4"
-              }
-            >
-              {filteredShops.map((shop) => (
-                <ShopCard
-                  key={shop.id}
-                  shop={shop}
-                  isListView={viewMode === "list"}
-                />
-              ))}
-            </div>
+            {isSearching ? (
+              <div className="space-y-4">
+                {[...Array(3)].map((_, index) => (
+                  <LoadingSkeleton key={index} lines={3} showAvatar={true} />
+                ))}
+              </div>
+            ) : (
+              <div
+                className={
+                  viewMode === "grid"
+                    ? "grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+                    : "space-y-4"
+                }
+              >
+                {filteredShops.map((shop) => (
+                  <ShopCard
+                    key={shop.id}
+                    shop={shop}
+                    isListView={viewMode === "list"}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* Load More */}
             <div className="text-center mt-8">
