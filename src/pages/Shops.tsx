@@ -421,15 +421,20 @@ const Shops = () => {
 
                 <div>
                   <h3 className="text-sm font-medium mb-3">Quick Filters</h3>
-                  <div className="space-y-2">
-                    <label className="flex items-center space-x-2 text-sm">
-                      <input type="checkbox" className="rounded" />
-                      <span>Open Now</span>
-                    </label>
-                    <label className="flex items-center space-x-2 text-sm">
-                      <input type="checkbox" className="rounded" />
-                      <span>Free Delivery</span>
-                    </label>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Search by name or product..."
+                      className="pl-10"
+                      onChange={handleSearch}
+                      disabled={isSearching}
+                    />
+                    {isSearching && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <LoadingSpinner size="sm" />
+                      </div>
+                    )}
+                  </div>
                     <label className="flex items-center space-x-2 text-sm">
                       <input type="checkbox" className="rounded" />
                       <span>Organic Products</span>
