@@ -283,8 +283,8 @@ const Account = () => {
                 </AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">
-                  {userData.name}
+                <h1 className="text-3xl font-medium text-gray-900">
+                  <p>Ayush Shukla</p>
                 </h1>
                 <p className="text-gray-600">
                   Member since {userData.joinedDate}
