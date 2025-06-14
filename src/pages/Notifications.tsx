@@ -33,7 +33,7 @@ import {
   Trash2,
   Settings,
   Filter,
-  MarkAsUnread,
+  Mail,
   AlertCircle,
   Leaf,
   MapPin,
