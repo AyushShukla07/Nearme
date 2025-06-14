@@ -369,7 +369,14 @@ const Shops = () => {
                     <Input
                       placeholder="Search by name or product..."
                       className="pl-10"
+                      onChange={handleSearch}
+                      disabled={isSearching}
                     />
+                    {isSearching && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <LoadingSpinner size="sm" />
+                      </div>
+                    )}
                   </div>
                 </div>
 
