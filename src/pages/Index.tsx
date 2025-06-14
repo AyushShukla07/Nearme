@@ -109,21 +109,21 @@ const Index = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Tarun Chaudhary",
       role: "Local Resident",
       content:
         "Amazing service! I get fresh vegetables from my neighborhood shop in minutes. Love supporting local business.",
       rating: 5,
     },
     {
-      name: "Mike Chen",
+      name: "Chitwan Bajpai",
       role: "Shop Owner",
       content:
         "Near me transformed my business. More customers, better visibility, and the delivery service is fantastic.",
       rating: 5,
     },
     {
-      name: "Emma Wilson",
+      name: "Ananad Manuwanjay Awasthi",
       role: "Eco-Conscious Customer",
       content:
         "Finally, a delivery service that cares about the environment. Electric vehicles and sustainable packaging!",
