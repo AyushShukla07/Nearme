@@ -75,7 +75,7 @@ const Account = () => {
 
   // Mock user data
   const [userData, setUserData] = useState({
-    name: "Sarah Johnson",
+    name: "Ayush Shukla",
     email: "sarah.johnson@email.com",
     phone: "+91 98765 43210",
     profileImage: "/api/placeholder/100/100",
