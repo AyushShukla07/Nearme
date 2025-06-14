@@ -14,10 +14,10 @@ const Loading = ({
   className = "",
 }: LoadingProps) => {
   const sizeClasses = {
-    sm: "w-12 h-12",
-    md: "w-16 h-16",
-    lg: "w-24 h-24",
-    xl: "w-32 h-32",
+    sm: "w-12 h-15",
+    md: "w-16 h-20",
+    lg: "w-24 h-30",
+    xl: "w-32 h-40",
   };
 
   const textSizes = {
@@ -31,54 +31,149 @@ const Loading = ({
     <div
       className={`flex flex-col items-center justify-center space-y-4 ${className}`}
     >
-      {/* Logo Animation Container */}
-      <div className="relative">
-        {/* Main Logo Pin */}
-        <div className={`${sizeClasses[size]} relative animate-bounce-slow`}>
-          {/* Pin Background with Gradient */}
-          <div className="w-full h-full bg-gradient-to-br from-green-400 via-green-500 to-emerald-600 rounded-full rounded-bl-none rotate-45 relative shadow-lg">
-            {/* Pin Tip */}
-            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-green-600 rotate-45"></div>
-          </div>
+      {/* Near me Logo Animation */}
+      <div className="relative flex items-center justify-center">
+        {/* Animated Logo Container */}
+        <div className={`${sizeClasses[size]} relative animate-pulse`}>
+          {/* SVG representation of the Near me logo */}
+          <svg
+            viewBox="0 0 120 150"
+            className="w-full h-full drop-shadow-lg"
+            style={{
+              filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.15))",
+            }}
+          >
+            {/* Map Pin Shape with Gradient */}
+            <defs>
+              <linearGradient
+                id="pinGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#86efac" />
+                <stop offset="50%" stopColor="#22c55e" />
+                <stop offset="100%" stopColor="#16a34a" />
+              </linearGradient>
+              <linearGradient
+                id="circleGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="100%" stopColor="#f8fafc" />
+              </linearGradient>
+            </defs>
 
-          {/* Content Container */}
-          <div className="absolute inset-0 flex items-center justify-center -rotate-45">
-            <div className="relative w-8 h-8 bg-white rounded-lg flex items-center justify-center shadow-inner">
-              {/* Delivery Truck Icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Truck
-                  className="w-4 h-4 text-blue-600 animate-slide-right"
-                  style={{
-                    animationDelay: "0.2s",
-                  }}
+            {/* Map Pin Body */}
+            <path
+              d="M60 25 C40 25, 25 40, 25 60 C25 75, 35 88, 60 115 C85 88, 95 75, 95 60 C95 40, 80 25, 60 25 Z"
+              fill="url(#pinGradient)"
+              className="animate-bounce-gentle"
+            />
+
+            {/* White Circle Inside Pin */}
+            <circle
+              cx="60"
+              cy="58"
+              r="25"
+              fill="url(#circleGradient)"
+              stroke="#e2e8f0"
+              strokeWidth="1"
+            />
+
+            {/* Delivery Truck */}
+            <g className="animate-slide-truck">
+              {/* Truck Body */}
+              <rect
+                x="40"
+                y="48"
+                width="22"
+                height="12"
+                rx="2"
+                fill="#2563eb"
+              />
+              {/* Truck Cab */}
+              <rect x="36" y="52" width="8" height="8" rx="1" fill="#1d4ed8" />
+              {/* Truck Wheels */}
+              <circle cx="42" cy="62" r="2.5" fill="#374151" />
+              <circle cx="58" cy="62" r="2.5" fill="#374151" />
+
+              {/* Motion Lines */}
+              <g className="animate-motion-lines">
+                <line
+                  x1="68"
+                  y1="50"
+                  x2="75"
+                  y2="50"
+                  stroke="#60a5fa"
+                  strokeWidth="1.5"
+                  opacity="0.8"
                 />
-              </div>
+                <line
+                  x1="68"
+                  y1="54"
+                  x2="73"
+                  y2="54"
+                  stroke="#60a5fa"
+                  strokeWidth="1.5"
+                  opacity="0.6"
+                />
+                <line
+                  x1="68"
+                  y1="58"
+                  x2="71"
+                  y2="58"
+                  stroke="#60a5fa"
+                  strokeWidth="1.5"
+                  opacity="0.4"
+                />
+              </g>
+            </g>
 
-              {/* Shopping Bag Icon */}
-              <div className="absolute top-0 right-0 transform translate-x-1 -translate-y-1">
-                <div className="w-3 h-3 bg-cyan-500 rounded-sm flex items-center justify-center animate-float">
-                  <ShoppingBag
-                    className="w-2 h-2 text-white"
-                    style={{
-                      animationDelay: "0.4s",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+            {/* Shopping Bag on Truck */}
+            <g className="animate-float-bag">
+              <rect
+                x="55"
+                y="42"
+                width="8"
+                height="8"
+                rx="1"
+                fill="#06b6d4"
+                stroke="#0891b2"
+                strokeWidth="0.5"
+              />
+              {/* Bag Handles */}
+              <path
+                d="M57 44 Q58 42, 59 44 M61 44 Q62 42, 63 44"
+                stroke="#0891b2"
+                strokeWidth="1"
+                fill="none"
+              />
+              {/* Bag Highlight */}
+              <rect
+                x="56"
+                y="43"
+                width="1"
+                height="4"
+                fill="#67e8f9"
+                opacity="0.6"
+              />
+            </g>
+          </svg>
         </div>
 
-        {/* Pulsing Rings */}
+        {/* Pulsing Effect Rings */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className={`${sizeClasses[size]} border-2 border-green-300 rounded-full animate-ping opacity-20`}
-          ></div>
+          <div className="w-20 h-20 border-2 border-green-300 rounded-full animate-ping opacity-25"></div>
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className={`${sizeClasses[size]} border-2 border-green-400 rounded-full animate-ping opacity-30`}
-            style={{ animationDelay: "0.3s" }}
+            className="w-24 h-24 border-2 border-green-400 rounded-full animate-ping opacity-15"
+            style={{ animationDelay: "0.5s" }}
           ></div>
         </div>
       </div>
@@ -86,24 +181,27 @@ const Loading = ({
       {/* Loading Text */}
       {showText && (
         <div className="text-center">
-          <div className="flex items-center space-x-2 mb-2">
+          <div className="flex items-center justify-center space-x-2 mb-2">
             <span
-              className={`font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent ${textSizes[size]}`}
+              className={`font-bold text-slate-700 ${textSizes[size]}`}
+              style={{
+                fontFamily: "system-ui, -apple-system, sans-serif",
+              }}
             >
-              Near me
+              Nearme
             </span>
-            <div className="flex space-x-1">
+            <div className="flex space-x-1 ml-2">
               <div
-                className="w-1 h-1 bg-green-500 rounded-full animate-bounce"
+                className="w-1.5 h-1.5 bg-green-500 rounded-full animate-bounce"
                 style={{ animationDelay: "0s" }}
               ></div>
               <div
-                className="w-1 h-1 bg-green-500 rounded-full animate-bounce"
-                style={{ animationDelay: "0.1s" }}
+                className="w-1.5 h-1.5 bg-green-500 rounded-full animate-bounce"
+                style={{ animationDelay: "0.15s" }}
               ></div>
               <div
-                className="w-1 h-1 bg-green-500 rounded-full animate-bounce"
-                style={{ animationDelay: "0.2s" }}
+                className="w-1.5 h-1.5 bg-green-500 rounded-full animate-bounce"
+                style={{ animationDelay: "0.3s" }}
               ></div>
             </div>
           </div>
