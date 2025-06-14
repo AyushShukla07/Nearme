@@ -276,10 +276,7 @@ const Account = () => {
               <Avatar className="w-20 h-20">
                 <AvatarImage src={userData.profileImage} />
                 <AvatarFallback className="text-xl">
-                  {userData.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
+                  <p>AS</p>
                 </AvatarFallback>
               </Avatar>
               <div>
