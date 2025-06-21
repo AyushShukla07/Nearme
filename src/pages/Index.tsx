@@ -175,7 +175,7 @@ const Index = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-lg rounded-xl border-green-200 hover:bg-green-50"
+                className="px-8 py-6 text-lg rounded-xl border-green-200 hover:bg-green-50 hover:text-green-600 hover:border-green-300"
                 onClick={() => {
                   console.log("Join as Shop Owner clicked!");
                   navigate("/shop-owner-dashboard");
