@@ -34,6 +34,7 @@ import {
 
 const Index = () => {
   const navigate = useNavigate();
+  const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
   const features = [
     {
       icon: <MapPin className="w-6 h-6 text-green-600" />,
