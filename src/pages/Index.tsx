@@ -31,6 +31,7 @@ import {
 } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: <MapPin className="w-6 h-6 text-green-600" />,
