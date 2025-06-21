@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +10,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
+import ShopOwnerOnboardingModal from "@/components/ShopOwnerOnboardingModal";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MapPin,
   Truck,
@@ -30,6 +33,8 @@ import {
 } from "lucide-react";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const [isOnboardingModalOpen, setIsOnboardingModalOpen] = useState(false);
   const features = [
     {
       icon: <MapPin className="w-6 h-6 text-green-600" />,
@@ -173,7 +178,8 @@ const Index = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-6 text-lg rounded-xl border-green-200 hover:bg-green-50"
+                className="px-8 py-6 text-lg rounded-xl border-green-200 hover:bg-green-50 hover:text-green-600 hover:border-green-300"
+                onClick={() => setIsOnboardingModalOpen(true)}
               >
                 <Store className="w-5 h-5 mr-2" />
                 Join as Shop Owner
@@ -372,6 +378,7 @@ const Index = () => {
                 size="lg"
                 variant="outline"
                 className="px-8 py-6 text-lg rounded-xl border-white text-white hover:bg-white hover:text-green-600"
+                onClick={() => setIsOnboardingModalOpen(true)}
               >
                 <Store className="w-5 h-5 mr-2" />
                 Partner With Us
@@ -409,7 +416,14 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">For Shop Owners</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>Partner Dashboard</li>
+                <li>
+                  <Link
+                    to="/shop-owner-dashboard"
+                    className="hover:text-white transition-colors"
+                  >
+                    Partner Dashboard
+                  </Link>
+                </li>
                 <li>Analytics</li>
                 <li>Promotional Tools</li>
                 <li>Support</li>
@@ -433,6 +447,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Shop Owner Onboarding Modal */}
+      <ShopOwnerOnboardingModal
+        isOpen={isOnboardingModalOpen}
+        onClose={() => setIsOnboardingModalOpen(false)}
+      />
     </div>
   );
 };
