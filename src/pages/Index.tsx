@@ -447,6 +447,12 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      {/* Shop Owner Onboarding Modal */}
+      <ShopOwnerOnboardingModal
+        isOpen={isOnboardingModalOpen}
+        onClose={() => setIsOnboardingModalOpen(false)}
+      />
     </div>
   );
 };
