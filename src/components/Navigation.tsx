@@ -83,6 +83,19 @@ const Navigation = () => {
         <Leaf className="w-4 h-4 mr-1" />
         Sustainability
       </Link>
+      <Link
+        to="/shop-owner-dashboard"
+        className={`${
+          mobile ? "block py-2 px-4" : "inline-flex items-center"
+        } text-sm font-medium transition-colors hover:text-primary ${
+          isActive("/shop-owner-dashboard")
+            ? "text-primary"
+            : "text-muted-foreground"
+        }`}
+      >
+        <Store className="w-4 h-4 mr-1" />
+        Shop Dashboard
+      </Link>
     </>
   );
 
