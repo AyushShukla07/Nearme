@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Notifications from "./pages/Notifications";
 import Account from "./pages/Account";
 import LoadingDemo from "./pages/LoadingDemo";
+import ShopOwnerDashboard from "./pages/ShopOwnerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
