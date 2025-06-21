@@ -415,7 +415,14 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">For Shop Owners</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>Partner Dashboard</li>
+                <li>
+                  <Link
+                    to="/shop-owner-dashboard"
+                    className="hover:text-white transition-colors"
+                  >
+                    Partner Dashboard
+                  </Link>
+                </li>
                 <li>Analytics</li>
                 <li>Promotional Tools</li>
                 <li>Support</li>
